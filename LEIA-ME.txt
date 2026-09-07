@@ -1,0 +1,26 @@
+═══════════════════════════════════════════════════════════
+ TESAKA — VERSÃO 2 (AMARELA)
+ Tela inicial com a cor Amarela (#B6FF2E) — botões e destaques
+ amarelos; FORM amarelo; telas de Perguntas e Respostas.
+═══════════════════════════════════════════════════════════
+
+COMO RODAR (requer Bun — bun.sh):
+  1. bun install
+  2. bun run db:push
+  3. bun run dev
+  4. Abrir http://localhost:3000
+     (o /api/seed roda sozinho e cria as contas demo)
+
+CONTAS DEMO (senha 123456):
+  advencer@qgroup.zip      (ADVENCER)
+  subadvancer@qgroup.zip   (SUBADVANCER)
+  orther@qgroup.zip        (ORTHER_ADVANCER)
+  prof.ana@qgroup.zip      (RESPONSAVEL — TezSchool)
+  aluno.lucas@qgroup.zip   (FUNCIONARIO — TezSchool)
+  carla@qgroup.zip         (FUNCIONARIO — mygroup)
+  maria@bao.id             (USUAL)
+
+MINI APPS DESTA VERSÃO: TesakaPedia, CARTA, LobaiteOS, Tesaka
+School, Tesaka Study, Tesaka Clinica, Tesaka Creators, TESAKA
+FORM, Tesaka Builder, Tesaka Drive, QGROUP.ZIP, Portal da
+Transparência, 7Play, YouPlay, BaoID.

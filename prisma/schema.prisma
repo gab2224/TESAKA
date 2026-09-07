@@ -1,0 +1,79 @@
+// ═══════════════════════════════════════════════════════════
+// TESAKA — VERSÃO 2 (AMARELA) — Prisma Schema (SQLite)
+// Reconstruído fielmente da Versão 2 (Task 1): User, Team,
+// KcoinTx, Notification, ChatThread, ChatMessage
+// ═══════════════════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  password       String
+  name           String
+  baoId          String   @unique
+  role           String   @default("USUAL") // USUAL | ADVENCER | SUBADVANCER | ORTHER_ADVANCER | RESPONSAVEL | FUNCIONARIO
+  kcoins         Int      @default(250)
+  org            String   @default("")
+  bio            String   @default("")
+  language       String   @default("pt")
+  faceRegistered Boolean  @default(false)
+  faceHash       String   @default("")
+  docVerified    Boolean  @default(false)
+  docType        String   @default("")
+  docNumber      String   @default("")
+  estrelados     Int      @default(0)
+  createdAt      DateTime @default(now())
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  kind      String   @default("POLO") // POLO | ESCOLA
+  cep       String   @default("")
+  createdBy String
+  members   String   @default("[]") // JSON array de BaoIDs
+  createdAt DateTime @default(now())
+}
+
+model KcoinTx {
+  id        String   @id @default(cuid())
+  fromBaoId String
+  toBaoId   String
+  amount    Int
+  note      String   @default("")
+  createdAt DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  toBaoId   String
+  fromBaoId String
+  type      String   @default("SISTEMA") // SISTEMA | KCOIN | CARTA_INVITE | CARTA_ACCEPT
+  title     String
+  body      String   @default("")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ChatThread {
+  id        String   @id @default(cuid())
+  members   String // JSON array [baoIdA, baoIdB] — notas: [baoId, baoId]
+  kind      String   @default("chat") // chat | notas
+  createdAt DateTime @default(now())
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  threadId  String
+  fromBaoId String
+  body      String
+  createdAt DateTime @default(now())
+}
